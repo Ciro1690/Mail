@@ -1,3 +1,5 @@
+const user = "2cool4u123@gmail.com";
+
 class Message {
     constructor(from = user, to = "", subject = "", body = "") {
         this.from = from;
@@ -7,6 +9,7 @@ class Message {
     }
 }
 
+let messageDraft = new Message;
 let messages = JSON.parse(localStorage.getItem('messages'));
 
 if (!messages) {
@@ -28,6 +31,17 @@ const MessageStore = {
     },
     getSentMessages() {
         return messages.sent.slice();
+    },
+    updateDraftField(field,value) {
+        messageDraft[field] = value;
+    },
+    sendDraft() {
+        messages.sent.push(messageDraft);
+        messageDraft = new Message;
+        localStorage.setItem('messages', JSON.stringify(messages));
+    },
+    getMessageDraft() {
+        return messageDraft;
     }
 }
 

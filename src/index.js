@@ -1,11 +1,13 @@
 let Router = require("./router");
 let Inbox = require("./inbox");
 let MessageStore = require("./message_store");
+let Sent = require("./sent");
+let Compose = require("./compose");
 
 let routes = {
-    // compose: Compose,
+    compose: Compose,
     inbox: Inbox,
-    // sent: Sent
+    sent: Sent
 };
 
 document.addEventListener("DOMContentLoaded", () => {
